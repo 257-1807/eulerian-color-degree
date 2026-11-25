@@ -1,0 +1,19 @@
+C3: vertices=7 edges=13 Eulerian=True colors=5 average=26/7 proposed_bound=39/7 holds=True
+C4: vertices=8 edges=14 Eulerian=True colors=5 average=7/2 proposed_bound=21/4 holds=True
+C5: vertices=9 edges=15 Eulerian=True colors=5 average=10/3 proposed_bound=5 holds=True
+C6: vertices=10 edges=16 Eulerian=True colors=5 average=16/5 proposed_bound=24/5 holds=False
+C7: vertices=11 edges=17 Eulerian=True colors=5 average=34/11 proposed_bound=51/11 holds=False
+C8: vertices=12 edges=18 Eulerian=True colors=5 average=3 proposed_bound=9/2 holds=False
+C9: vertices=13 edges=19 Eulerian=True colors=5 average=38/13 proposed_bound=57/13 holds=False
+C10: vertices=14 edges=20 Eulerian=True colors=5 average=20/7 proposed_bound=30/7 holds=False
+C11: vertices=15 edges=21 Eulerian=True colors=5 average=14/5 proposed_bound=21/5 holds=False
+C12: vertices=16 edges=22 Eulerian=True colors=5 average=11/4 proposed_bound=33/8 holds=False
+C=0 clique=5 four-cycles=5 vertices=20 Eulerian=True average=3 colors>=5
+C=1 clique=7 four-cycles=21 vertices=70 Eulerian=True average=3 colors>=7
+C=2 clique=9 four-cycles=45 vertices=144 Eulerian=True average=3 colors>=9
+C=3 clique=11 four-cycles=77 vertices=242 Eulerian=True average=3 colors>=11
+C=4 clique=13 four-cycles=117 vertices=364 Eulerian=True average=3 colors>=13
+C=5 clique=15 four-cycles=165 vertices=510 Eulerian=True average=3 colors>=15
+C=6 clique=17 four-cycles=221 vertices=680 Eulerian=True average=3 colors>=17
+C=7 clique=19 four-cycles=285 vertices=874 Eulerian=True average=3 colors>=19
+C=8 clique=21 four-cycles=357 vertices=1092 Eulerian=True average=3 colors>=21

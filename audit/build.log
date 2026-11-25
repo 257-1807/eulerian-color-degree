@@ -1,0 +1,25 @@
+$ lean --version
+Lean (version 4.36.0, arm64-apple-darwin24.6.0, commit 611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9, Release)
+exit status: 0
+
+$ lake --version
+Lake version 5.0.0-src+611c117 (Lean version 4.36.0)
+exit status: 0
+
+$ git -C .lake/packages/mathlib rev-parse HEAD
+fc4f59e577feb1a4956671bc04ac18aaaf8cd842
+exit status: 0
+
+$ lake --wfail build
+ℹ [6418/6420] Built EulerianColor (1.5s)
+info: EulerianColor.lean:193:0: 'EulerianColor.unbounded_at_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EulerianColor.lean:194:0: 'EulerianColor.refute_0caab573' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (6420 jobs).
+exit status: 0
+
+$ lake build
+ℹ [6418/6420] Replayed EulerianColor
+info: EulerianColor.lean:193:0: 'EulerianColor.unbounded_at_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EulerianColor.lean:194:0: 'EulerianColor.refute_0caab573' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (6420 jobs).
+exit status: 0

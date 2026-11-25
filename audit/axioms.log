@@ -1,0 +1,4 @@
+$ lake env lean -DwarningAsError=true EulerianColor.lean
+'EulerianColor.unbounded_at_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'EulerianColor.refute_0caab573' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit status: 0
