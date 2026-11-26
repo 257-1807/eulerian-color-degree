@@ -2,7 +2,9 @@
 
 AutoGraphForge 候选 `0caab573` 断言，每张至少有两个顶点的欧拉图都满足 $\chi(G)\le\tfrac32\bar d(G)$。将 $K_5$ 和六边形 $C_6$ 各取一个顶点并合为同一个顶点，便得到一张 10 顶点的反例。其色数为 5，平均度为 $16/5$，所以候选要求 $5\le24/5$。
 
-更强地说，**即使平均度恰好等于 3，有限连通欧拉图的色数仍然无界**。10 顶点见证在上一轮仅作本地备用候选，本轮首次将其整理为公开项目，并加入固定平均度图族的全参数证明。两个结论都已经在 Lean 4 中编译并通过内核重放。[完整证明](EulerianColor.lean) · [公理审计](audit/axioms.log)
+更强地说，**即使平均度恰好等于 3，有限连通欧拉图的色数仍然无界**。两个结论都已经在 Lean 4 中编译并通过内核重放。[完整证明](EulerianColor.lean) · [公理审计](audit/axioms.log)
+
+[证明](#10-个顶点如何推翻全称命题) · [Lean 主文件](EulerianColor.lean) · [查重与先例](audit/search.md)
 
 ## 来源与原文
 
@@ -16,13 +18,17 @@ Ján Pastorek 在 *AutoGraphForge: Towards Automated Graph Theory Discovery*（2
 
 ## 10 个顶点如何推翻全称命题
 
+固定一个五点团就能保证至少需要五种颜色。把环接在团的一个顶点上，只会给已有顶点增加偶数度，还能用团已有的颜色给环着色。这提供了一种独立调节平均度和色数的方法。
+
 取顶点 $0,1,2,3,4$，加入这五点之间的全部十条边，再加入环 $0,5,6,7,8,9,0$ 的六条边。两部分共用顶点 0，整张图连通。顶点 0 的度为 6，顶点 1 到 4 的度都是 4，顶点 5 到 9 的度都是 2，故整图欧拉。平均度为
 
 $$\bar d(G)=\frac{6+4\cdot4+5\cdot2}{10}=\frac{16}{5}.$$
 
-五点团需要五种颜色。给顶点 0 至 4 分别赋色 0 至 4，再给顶点 5 至 9 依次赋色 $1,2,1,2,1$，所得染色合法，恰用五色。于是 $\chi(G)=5>\tfrac32(16/5)=24/5$。
+五点团需要五种颜色。给顶点 0 至 4 分别赋色 0 至 4，再给顶点 5 至 9 依次赋色 $1,2,1,2,1$，所得染色合法，恰用五色。于是 $\chi(G)=5>\tfrac32(16/5)=24/5$。若把六边形换成五边形，图有 9 个顶点、15 条边，仍需 5 色，原式的右端恰为 $5$。加长一条边使不等式从取等变为失效；这里只比较同一构造族的这两个成员。
 
 ## 平均度固定为 3 时色数仍然无界
+
+每接上一个只与原图共用一点的四边形，就增加 4 条边和 3 个顶点。于是 $2|E|-3|V|$ 每次减少 $1$，可以调到零，同时保住原图中的大团。
 
 给定任何自然数 $C$，令 $r=2C+5$，从 $K_r$ 中选一个顶点 $z$。添上 $t=r(r-4)$ 个四边形，每个四边形都经过 $z$，其余三个顶点全是新顶点，而且分别属于自己的四边形。
 
@@ -55,7 +61,6 @@ $$r(r-1)+8t-3(r+3t)=r(r-4)-t=0.$$
 ```sh
 lake exe cache get Mathlib.Combinatorics.SimpleGraph.Coloring.Vertex Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected Mathlib.Combinatorics.SimpleGraph.Finite Mathlib.Tactic
 lake --wfail build
-lake build
 lake env lean -DwarningAsError=true EulerianColor.lean
 lake env leanchecker --verbose EulerianColor
 python3 scripts/check.py
